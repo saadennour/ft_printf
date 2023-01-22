@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 19:19:41 by sfarhan           #+#    #+#             */
-/*   Updated: 2021/12/05 01:02:57 by sfarhan          ###   ########.fr       */
+/*   Created: 2021/12/04 21:57:14 by sfarhan           #+#    #+#             */
+/*   Updated: 2021/12/04 21:58:53 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nb)
+int	ft_putadd(unsigned long n)
 {
-	unsigned int	a;
-	int				i;
+	char	*base;
+	int		i;
 
-	i = count(nb);
-	if (nb < 0)
+	i = 0;
+	base = "0123456789abcdef";
+	if (n >= 16)
 	{
-		write (1, "-", 1);
-		nb *= -1;
-	}
-	a = nb;
-	if (a > 9)
-	{
-		ft_putnbr(a / 10);
-		ft_putnbr(a % 10);
+		i += ft_putadd(n / 16);
+		i += ft_putadd(n % 16);
 	}
 	else
-	{
-		a += '0';
-		ft_putchar(a);
-	}
+		i += ft_putchar(base[n]);
 	return (i);
 }

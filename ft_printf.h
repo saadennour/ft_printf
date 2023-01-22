@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 19:19:41 by sfarhan           #+#    #+#             */
-/*   Updated: 2021/12/05 01:02:57 by sfarhan          ###   ########.fr       */
+/*   Created: 2021/11/15 00:28:36 by sfarhan           #+#    #+#             */
+/*   Updated: 2021/12/05 00:07:25 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <unistd.h>
+# include <stdarg.h>
 
-int	ft_putnbr(int nb)
-{
-	unsigned int	a;
-	int				i;
+int		ft_printf(const char *str, ...);
+int		ft_putnbr_u(unsigned int nbr);
+int		ft_putchar(int c);
+int		ft_putnbr(int nb);
+int		ft_putstr(char *str);
+size_t	ft_strlen(const char *str);
+int		count(long int n);
+int		ft_puthex(int n, char x);
+int		ft_putadd(unsigned long n);
 
-	i = count(nb);
-	if (nb < 0)
-	{
-		write (1, "-", 1);
-		nb *= -1;
-	}
-	a = nb;
-	if (a > 9)
-	{
-		ft_putnbr(a / 10);
-		ft_putnbr(a % 10);
-	}
-	else
-	{
-		a += '0';
-		ft_putchar(a);
-	}
-	return (i);
-}
+#endif

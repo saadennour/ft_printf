@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 19:19:41 by sfarhan           #+#    #+#             */
-/*   Updated: 2021/12/05 01:02:57 by sfarhan          ###   ########.fr       */
+/*   Created: 2021/08/16 15:11:16 by sfarhan           #+#    #+#             */
+/*   Updated: 2021/12/04 22:10:43 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nb)
+int	ft_putstr(char *str)
 {
-	unsigned int	a;
-	int				i;
+	int	i;
 
-	i = count(nb);
-	if (nb < 0)
+	i = 0;
+	if (!str)
 	{
-		write (1, "-", 1);
-		nb *= -1;
+		write (1, "(null)", 6);
+		return (6);
 	}
-	a = nb;
-	if (a > 9)
+	while (*str != '\0')
 	{
-		ft_putnbr(a / 10);
-		ft_putnbr(a % 10);
-	}
-	else
-	{
-		a += '0';
-		ft_putchar(a);
+		write(1, str, 1);
+		str++;
+		i += 1;
 	}
 	return (i);
 }
